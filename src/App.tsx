@@ -5,6 +5,7 @@ import PersonList from './Component/ComponentWithProp/PersonList';
 import Status from './Component/ComponentWithProp/Status';
 import Heading from './Component/ComponentWithProp/Heading';
 import Prabin from './Component/ComponentWithProp/Prabin';
+import ClickEvent from './Component/ComponentWithProp/ClickEvent';
 
 const person = {
   firstName: "Prabin",
@@ -29,23 +30,17 @@ const personList = [
   }
 ]
 
-let status:  "error" | "loading" | "success" = "loading"
+let status:  "error" | "loading" | "success" = "loading";
+
+
+
 function App() {
+  const handleClick = (id: number, event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log('Clicked item is', id, event);
+}
   return (
     <>
-    <Greet isLoggedIn={true} name='Prabin' messageCount={19}/>
-    <Person person = {person}/>
-    <PersonList personList={personList}/>
-    <Status status={status}/>
-    <Heading>
-      Hello world 
-    </Heading>
-
-    <Prabin>
-      <Heading>
-        some text formatted by heading component passed as children prop
-      </Heading>
-    </Prabin>
+    <ClickEvent handleClick={handleClick}/>
     </>
   );
 }
