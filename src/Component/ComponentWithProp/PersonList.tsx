@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 type PersonListType = {
     personList : {
         firstName: string,
