@@ -12,6 +12,10 @@ import UserInfo from './Component/TestComponentWithProp/UserInfo';
 import ItemList from './Component/TestComponentWithProp/ItemList';
 import Button from './Component/TestComponentWithProp/Button';
 import Form from './Component/TestComponentWithProp/Form';
+import PlaceHolder from './Component/TestComponentWithProp/PlaceHolder';
+import ProfileCard from './Component/TestComponentWithProp/ProfileCard';
+import ProductList from './Component/TestComponentWithProp/ProductList';
+import PageLayout from './Component/TestComponentWithProp/PageLayout';
 
 const person = {
   firstName: "Prabin",
@@ -80,9 +84,20 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
   event.preventDefault();
   console.log(formData);
 }
+
+const products = [
+  {id: 1, name: "milk", price: 2.4},
+  {id: 2, name: "bread", price: 3},
+  {id: 3, name: "Juice", price: 2.4}
+]
+
   return (
     <>
-    <Form onSubmit={handleSubmit} onChange={handleChange} formData={formData}/>
+    {/* <Form onSubmit={handleSubmit} onChange={handleChange} formData={formData}/> */}
+    {/* <PlaceHolder><h2>Hello world</h2></PlaceHolder> */}
+    {/* <ProfileCard avatar={<img src='avatar.jpeg'/>}/> */}
+    {/* <ProductList products={products}/> */}
+    <PageLayout children={<p>This is body</p>} footer={<h2>Footer component</h2>} header={<h3>Header component</h3>}/>
     </>
   );
 }
