@@ -7,6 +7,11 @@ import Heading from './Component/ComponentWithProp/Heading';
 import Prabin from './Component/ComponentWithProp/Prabin';
 import ClickEvent from './Component/ComponentWithProp/ClickEvent';
 import InputEvent from './Component/ComponentWithProp/InputEvent';
+import Greeting from './Component/TestComponentWithProp/Greeting';
+import UserInfo from './Component/TestComponentWithProp/UserInfo';
+import ItemList from './Component/TestComponentWithProp/ItemList';
+import Button from './Component/TestComponentWithProp/Button';
+import Form from './Component/TestComponentWithProp/Form';
 
 const person = {
   firstName: "Prabin",
@@ -38,17 +43,46 @@ let status:  "error" | "loading" | "success" = "loading";
 function App() {
   const [inputValue, setInputValue] = useState("");
     
-  const handleClick = (id: number, event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('Clicked item is', id, event);
+//   const handleClick = (id: number, event: React.MouseEvent<HTMLButtonElement>) => {
+//     console.log('Clicked item is', id, event);
+// }
+
+// const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//   setInputValue(event.target.value)
+// }
+let user = {
+  name: "Sumit",
+  age: 34
 }
 
+const items = [
+  "apple",
+  "mango",
+  "pears",
+  "banana",
+  "Grapes"
+]
+const handleClick = (id: number, event: React.MouseEvent<HTMLButtonElement>) => {
+  console.log("Button is Clicked", id, event)
+}
+
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  salary: 0
+})
+
 const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setInputValue(event.target.value)
+  setFormData({...formData, [event.target.name]: event.target.value })
+}
+
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  console.log(formData);
 }
   return (
     <>
-    <ClickEvent handleClick={handleClick}/>
-    <InputEvent value={inputValue} handleChange={handleChange}/>
+    <Form onSubmit={handleSubmit} onChange={handleChange} formData={formData}/>
     </>
   );
 }
