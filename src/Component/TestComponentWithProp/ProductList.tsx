@@ -1,11 +1,7 @@
 import React from 'react'
-type ProductListProp = {
-    products: {
-        id: number,
-        name: string,
-        price: number
-    }[]
-}
+
+import { ProductListProp } from './ProductList.types'
+
 export default function ProductList({products}: ProductListProp) {
   return (
     <div>
