@@ -23,6 +23,17 @@ import ParentCounter from './Component/State/Counter/ParentCounter';
 import TaskList from './Component/State/Tasks/TaskList';
 import Fridge from './Component/State/Fridge/Fridge';
 import Counter from './Component/State/Counter/Counter';
+import DynamicForm from './Component/State/DynamicForm/DynamicForm';
+import ChildComponent from './Component/Context/ChildComponent';
+import { GreetingContext, GreetingContextProvider } from './Component/Context/GreetingContext';
+import ParentComponent from './Component/Context/ParentComponent';
+import { CartContextProvider } from './Component/Context/Cart/CartContext';
+import { CartContextProviderTest } from './Component/Context/Cart-with-reducer/CartContext';
+import ShoppingCartTest from './Component/Context/Cart-with-reducer/ShoppingCart';
+import { FormContextProvider } from './Component/Context/ValidForms/ValidFormsContext';
+import FormConsumer from './Component/Context/ValidForms/Form';
+import { AuthUserContextProvider } from './Component/Context/AuthUser/AuthUserContext';
+import AuthUserConsumer from './Component/Context/AuthUser/AuthUserConsumer';
 const person = {
   firstName: "Prabin",
   lastName: "K C",
@@ -50,9 +61,10 @@ let status:  "error" | "loading" | "success" = "loading";
 
 
 
+
+
 function App() {
   const [inputValue, setInputValue] = useState("");
-    
 //   const handleClick = (id: number, event: React.MouseEvent<HTMLButtonElement>) => {
 //     console.log('Clicked item is', id, event);
 // }
@@ -118,19 +130,40 @@ const [user, setUser] = useState<null | UserStateType>(user2)
       email: "prabin@example"
     })
   }
+
+ 
   return (
     <>
     {/* <Form onSubmit={handleSubmit} onChange={handleChange} formData={formData}/> */}
     {/* <PlaceHolder><h2>Hello world</h2></PlaceHolder> */}
     {/* <ProfileCard avatar={<img src='avatar.jpeg'/>}/> */}
     {/* <ProductList products={products}/> */}
+    {/* <GreetingContextProvider>
     <PageLayout children={<p>This is body</p>} footer={<h2>Footer component</h2>} header={<h3>Header component</h3>}/>
     <StyledComponent style={{display:'flex', flexDirection:'column', margin:'auto', justifyContent:'space-between', alignItems:'center', padding:'5px'}}/>
     <User userData={user2} handleLogin={handleLogin} handleLogout={handleLogout}/>
-    {/* <ParentCounter /> */}
-    {/* <TaskList /> */}
+    <ParentCounter />
+    <TaskList />
     <Fridge />
     <Counter />
+    <DynamicForm />
+   
+    
+      <ChildComponent />
+      <ParentComponent />
+    </GreetingContextProvider> */}
+
+    {/* <CartContextProviderTest>
+      <ShoppingCartTest />
+    </CartContextProviderTest>
+
+    <FormContextProvider>
+      <FormConsumer />
+    </FormContextProvider> */}
+
+      <AuthUserContextProvider>
+        <AuthUserConsumer />
+      </AuthUserContextProvider>
     </>
   );
 }
