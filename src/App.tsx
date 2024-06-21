@@ -34,6 +34,15 @@ import { FormContextProvider } from './Component/Context/ValidForms/ValidFormsCo
 import FormConsumer from './Component/Context/ValidForms/Form';
 import { AuthUserContextProvider } from './Component/Context/AuthUser/AuthUserContext';
 import AuthUserConsumer from './Component/Context/AuthUser/AuthUserConsumer';
+import Focus from './Component/Ref/Focus';
+import ClickMeOrNot from './Component/Ref/ClickMeOrNot';
+import KeepingTrackOfPreviousValue from './Component/Ref/KeepingTrackOfPreviousValue';
+import StoringMutableObject from './Component/Ref/StoringMutableObject';
+import FocusOnTextField from './Component/Ref/FocusOnTextField';
+import FocusFirstInputField from './Component/Ref/FocusFirstInputField';
+import ShowPreviousInputValue from './Component/Ref/ShowPreviousInputValue';
+import CommentSecion from './Component/ComponentAsProp/CommentSecion';
+import Post from './Component/ComponentAsProp/Post';
 const person = {
   firstName: "Prabin",
   lastName: "K C",
@@ -161,9 +170,20 @@ const [user, setUser] = useState<null | UserStateType>(user2)
       <FormConsumer />
     </FormContextProvider> */}
 
-      <AuthUserContextProvider>
+      {/* <AuthUserContextProvider>
         <AuthUserConsumer />
-      </AuthUserContextProvider>
+      </AuthUserContextProvider> */}
+      {/* <Focus /> */}
+      {/* <ClickMeOrNot /> */}
+      {/* <KeepingTrackOfPreviousValue /> */}
+      {/* <StoringMutableObject /> */}
+
+      {/* <FocusOnTextField /> */}
+      {/* <FocusFirstInputField /> */}
+      {/* <ShowPreviousInputValue /> */}
+      {/* <CommentSecion id={1}/> */}
+      {/* <Post isCommented={true} childComponent={<CommentSecion id={2}/>}/> */}
+      <Post isCommented={true} component={CommentSecion}/>
     </>
   );
 }
