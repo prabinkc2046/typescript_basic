@@ -5,9 +5,9 @@ type PostProps = {
     component: React.ComponentType<CommentSectionProps>,
     isCommented: Boolean,
 }
-export default function Post({component: CommentSectionComponent, isCommented}: PostProps) {
+export default function Post({component: CommentSection, isCommented}: PostProps) {
   if (isCommented){
-    return <CommentSectionComponent id={2}/>
+    return <CommentSection id={2}/>
   } else {
     return <div> no comment</div>
   }

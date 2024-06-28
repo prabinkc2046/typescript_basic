@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { actionTypes, classifyAge } from './Component/General/basic';
+
 import Person from './Component/ComponentWithProp/Person';
 import Greet from './Component/ComponentWithProp/Greet';
 import PersonList from './Component/ComponentWithProp/PersonList';
@@ -43,10 +45,33 @@ import FocusFirstInputField from './Component/Ref/FocusFirstInputField';
 import ShowPreviousInputValue from './Component/Ref/ShowPreviousInputValue';
 import CommentSecion from './Component/ComponentAsProp/CommentSecion';
 import Post from './Component/ComponentAsProp/Post';
+import Menu, { MenuItems } from './Component/ComponentAsProp/Menu';
+import LinkItem from './Component/ComponentAsProp/LinkItem';
+import ActionItem from './Component/ComponentAsProp/ActionItem';
+import TextCard, { TextCardProps } from './Component/ComponentAsProp/Card/TextCard';
+import ImageCard from './Component/ComponentAsProp/Card/ImageCard';
+import CardComponent from './Component/ComponentAsProp/Card/CardComponent';
+import List from './Component/GenericType/List';
+import GenericListComponenet from './Component/GenericType/GenericListComponenet';
+import RenderSortableList from './Component/GenericType/SortedByPropertyGenericList/RenderSortableList';
+import FilterableList from './Component/GenericType/FilterableList/FilterableList';
+import RenderFilterableList from './Component/GenericType/FilterableList/RenderFilterableList';
+import PaginatedList from './Component/GenericType/PaginatedList/PaginatedList';
+import RandomValue from './Component/RestrictingProps/RandomValue';
+import CustomButton from './Component/Custom/CustomButton';
+import CustomButtonWithMoreProps from './Component/Custom/CustomButtonWithMoreProps';
+import CustomInput from './Component/Custom/CustomInput';
+import { backgroundColor } from './Component/Context/Greeting';
+import CustomCard from './Component/Custom/CustomCard';
+import CustomAlert from './Component/Custom/CustomAlert';
+import RestricToCertainElement from './Component/Custom/RestricToCertainElement';
+import { Alice, Em } from './Component/General/Class/Person';
+import { transformArray } from './Component/GenericType/GenericFunction/genericFunctions';
 const person = {
   firstName: "Prabin",
   lastName: "K C",
 }
+
 
 const personList = [
   {
@@ -71,7 +96,10 @@ let status:  "error" | "loading" | "success" = "loading";
 
 
 
-
+Alice.greet()
+Em.greet()
+const newArray = transformArray(["sdfdf", "dfdsfs", "dsfdfds"], (str) => str.length)
+console.log(newArray);
 function App() {
   const [inputValue, setInputValue] = useState("");
 //   const handleClick = (id: number, event: React.MouseEvent<HTMLButtonElement>) => {
@@ -85,6 +113,9 @@ function App() {
 //   name: "Sumit",
 //   age: 34
 // }
+
+console.log(actionTypes.ADD_ITEM)
+classifyAge(9)
 
 const items = [
   "apple",
@@ -140,7 +171,24 @@ const [user, setUser] = useState<null | UserStateType>(user2)
     })
   }
 
- 
+  const menuItems: MenuItems[] = [
+    { type: 'link', label: 'Home', url: '/' },
+    { type: 'link', label: 'About', url: '/about' },
+    { type: 'action', label: 'Logout', onClick: () => console.log('Logging out...') }
+];
+
+
+type MyUser = {
+  name: string;
+  age: number;
+}
+const myUser: MyUser[] = [
+  { name: 'Alice', age: 30 },
+  { name: 'Bob', age: 25 },
+  { name: 'Charlie', age: 35 },
+]
+
+
   return (
     <>
     {/* <Form onSubmit={handleSubmit} onChange={handleChange} formData={formData}/> */}
@@ -183,7 +231,39 @@ const [user, setUser] = useState<null | UserStateType>(user2)
       {/* <ShowPreviousInputValue /> */}
       {/* <CommentSecion id={1}/> */}
       {/* <Post isCommented={true} childComponent={<CommentSecion id={2}/>}/> */}
-      <Post isCommented={true} component={CommentSecion}/>
+      {/* <Post isCommented={true} component={CommentSecion}/>
+      <Menu menuItems={menuItems}/>
+      <LinkItem label='new label' url='go no where'/>
+      <ActionItem label='click me' onClick={() => console.log("you click me")}/> */}
+      <TextCard text='Hello'/>
+      <ImageCard imageUrl='favicon.ico'/>
+      {/* <CardComponent variant='image' imageurl='favicon.ico'  text='hello from parent' componentText={TextCard} componentImage={ImageCard}/> */}
+      {/* <List<Item> itemList={itemList} onClick={handleItemClick}/> */}
+        {/* <GenericListComponenet<MyUser>  list={myUser} renderItem={(user: MyUser) => (
+          <li>
+            {user.name} - {user.age}
+          </li>
+        )}/> */}
+      
+      <RenderSortableList />
+      {/* <FilterableList /> */}
+      <RenderFilterableList />
+      <PaginatedList />
+
+      <RandomValue  value={20} isNegative/>
+      
+      <CustomButton onClick={() => console.log("clicked me you moran")} style={{color:'black'}}>
+        hello world
+      </CustomButton>
+      <CustomButtonWithMoreProps label='click me' isActive onClick={() => console.log("clicked")}/>
+      <CustomInput style={{backgroundColor:'lightblue'}} type='text' placeholder='type your name' onChange={(e) => console.log(e.target.value)}/>
+    <CustomCard title='New card' style={{backgroundColor:'lightgray'}}>
+      <p>This is a content</p>
+    </CustomCard>
+    <CustomAlert message='Hello, Nepal' style={{backgroundColor:'lightcyan', padding:'10px'}}/>
+    <RestricToCertainElement element='section'>
+      <div>hello world</div>
+    </RestricToCertainElement>
     </>
   );
 }
